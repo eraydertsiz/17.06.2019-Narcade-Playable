@@ -102,7 +102,7 @@
 			var windowRatio = windowWidth / windowHeight;
 			var gameRatio = config.scale.width / config.scale.height;
 			if(windowRatio < gameRatio){
-				document.get canvas.style.width = windowWidth + "px";
+				canvas.style.width = windowWidth + "px";
 				canvas.style.height = (windowWidth / gameRatio) + "px";
 			}
 			else{
