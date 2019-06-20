@@ -78,6 +78,38 @@
 			
 			dapi.addEventListener("viewableChange", viewableChangeCallback);
 			dapi.addEventListener("audioVolumeChange", audioVolumeChangeCallback);
+			//dapi.addEventListener("adResized", resizeGame);
+		}
+		
+		function resizeGame(){
+			
+			var canvas = document.querySelector("canvas");
+			var windowWidth;
+			var windowHeight;
+			
+			if(dapi !== undefined){
+				var screenSize = dapi.getScreenSize();
+				windowWidth = screenSize.width;
+				windowHeight = screenSize.height;
+			}
+			else{
+				windowWidth = window.innerWidth;
+				windowHeight = window.innerHeight;
+			}
+			
+			var screenSize = dapi.getScreenSize();
+			
+			var windowRatio = windowWidth / windowHeight;
+			var gameRatio = .config.width / game.config.height;
+			if(windowRatio < gameRatio){
+				document.get canvas.style.width = windowWidth + "px";
+				canvas.style.height = (windowWidth / gameRatio) + "px";
+			}
+			else{
+				canvas.style.width = (windowHeight * gameRatio) + "px";
+				canvas.style.height = windowHeight + "px";
+			}
+			
 		}
 
 		function startGame() {
@@ -115,7 +147,7 @@
             type: Phaser.CANVAS,
             disableContextMenu: true,
             scale: {
-                //scale: 'SHOW_ALL',
+                scale: 'SHOW_ALL',
                 mode: Phaser.Scale.FIT,
                 autoCenter: Phaser.Scale.CENTER_BOTH,
                 width: 630,
