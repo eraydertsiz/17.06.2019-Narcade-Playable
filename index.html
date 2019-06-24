@@ -115,16 +115,19 @@
 			if(dapi.isViewable())
 				startGame();
 			
-			dapi.addEventListener("viewableChange", viewableChangeCallback);
+			dapi.addEventListener("viewableChange",startGame);
 			//dapi.addEventListener("onOrientationChange", orientationChange);
 			dapi.addEventListener("audioVolumeChange", audioVolumeChangeCallback);
-			dapi.addEventListener("adResized", resizeGame);
+			dapi.addEventListener("adResized", startGame);
 		}
 		
 		
 
 		function startGame() {
-			game = new Phaser.Game(config);
+			if(game == null){
+				game = new Phaser.Game(config);
+			}
+			window.addEventListener("resize", resizeGame, false);
 			resizeGame();
 		}
 		
