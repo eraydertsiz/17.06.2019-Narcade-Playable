@@ -63,35 +63,7 @@
 	</script>
 	
     <script>
-		
-		window.onload = function(){
-			if(typeof(dapi) !== 'undefined'){
-				(dapi.isReady()) ? onReadyCallback() : dapi.addEventListener("ready", onReadyCallback);
-				console.log("Dapi Mode");
-			}
-			else{
-				game = new Phaser.Game(config);
-				console.log("Test Mode");
-			}
-				
-		};
-
-		function onReadyCallback(){
-			//No need to listen to this event anymore
-			dapi.removeEventListener("ready", onReadyCallback);
-			
-			var startVolume = dapi.getAudioVolume();
-
-			//If the ad is visible start the game
-			if(dapi.isViewable())
-				startGame();
-			
-			dapi.addEventListener("viewableChange", viewableChangeCallback);
-			//dapi.addEventListener("onOrientationChange", orientationChange);
-			dapi.addEventListener("audioVolumeChange", audioVolumeChangeCallback);
-			dapi.addEventListener("adResized", resizeGame);
-		}
-		
+	
 		function resizeGame(){
 			console.log("resize game");
 			var canvas = document.querySelector("canvas");
@@ -120,10 +92,46 @@
 			}
 			
 		}
+		
+		window.onload = function(){
+			if(typeof(dapi) !== 'undefined'){
+				(dapi.isReady()) ? onReadyCallback() : dapi.addEventListener("ready", onReadyCallback);
+				console.log("Dapi Mode");
+			}
+			else{
+				game = new Phaser.Game(config);
+				console.log("Test Mode");
+			}
+			resizeUpdate();
+		};
+
+		function onReadyCallback(){
+			//No need to listen to this event anymore
+			dapi.removeEventListener("ready", onReadyCallback);
+			
+			var startVolume = dapi.getAudioVolume();
+
+			//If the ad is visible start the game
+			if(dapi.isViewable())
+				startGame();
+			
+			dapi.addEventListener("viewableChange", viewableChangeCallback);
+			//dapi.addEventListener("onOrientationChange", orientationChange);
+			dapi.addEventListener("audioVolumeChange", audioVolumeChangeCallback);
+			dapi.addEventListener("adResized", resizeGame);
+		}
+		
+		
 
 		function startGame() {
 			game = new Phaser.Game(config);
 			resizeGame();
+		}
+		
+		function resizeUpdate()
+		{
+			resizeGame();
+			window.requestAnimationFrame(resizeUpdate);
 		}
 		
 		function audioVolumeChangeCallback(volume){
