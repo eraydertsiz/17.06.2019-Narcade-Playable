@@ -12,6 +12,15 @@
             background-color: black;
         }
 		
+		canvas{
+			display:block;
+			margin: 0;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+        }
+		
 		#loadingdiv{
 			background-color: black;
 			position: absolute;
@@ -77,12 +86,13 @@
 				startGame();
 			
 			dapi.addEventListener("viewableChange", viewableChangeCallback);
+			//dapi.addEventListener("onOrientationChange", orientationChange);
 			dapi.addEventListener("audioVolumeChange", audioVolumeChangeCallback);
 			dapi.addEventListener("adResized", resizeGame);
 		}
 		
 		function resizeGame(){
-			
+			console.log("resize game");
 			var canvas = document.querySelector("canvas");
 			var windowWidth;
 			var windowHeight;
@@ -147,11 +157,11 @@
             disableContextMenu: true,
             scale: {
                 //scale: 'SHOW_ALL',
-                mode: Phaser.Scale.FIT,
-                autoCenter: Phaser.Scale.CENTER_BOTH,
+                //mode: Phaser.Scale.FIT,
+                //autoCenter: Phaser.Scale.CENTER_BOTH,
                 width: 630,
                 height: 1120,
-                orientation: 'PORTRAIT',
+                orientation: 'PORTRAIT'
             },
             scene: {
                 preload: preload,
