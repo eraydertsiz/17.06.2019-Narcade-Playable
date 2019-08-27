@@ -1,0 +1,71 @@
+{
+  "levelType": "rounded",
+  "levelRotateType": "left",
+  "centerBall": {
+    "index": 0,
+    "x": 1,
+    "y": 1,
+    "z": 2
+  },
+  
+  
+  "ballCount": 5,
+  "ballsArray": [
+    {
+      "x": 1,
+      "y": 1,
+      "z": 2,
+      "color": 0
+    },
+    {
+      "x": 0,
+      "y": 2,
+      "z": 2,
+      "color": 1
+    },
+    {
+      "x": 0,
+      "y": 1,
+      "z": 1,
+      "color": 1
+    },
+    {
+      "x": 1,
+      "y": 0,
+      "z": 1,
+      "color": 1
+    },
+    {
+      "x": 2,
+      "y": 0,
+      "z": 2,
+      "color": 1
+    },
+    {
+      "x": 2,
+      "y": 1,
+      "z": 3,
+      "color": 2
+    },
+    {
+      "x": 1,
+      "y": 2,
+      "z": 3,
+      "color": 1
+    }
+  ],
+  "ballColors": [
+    {
+      "color": "0xd245c4"
+    },
+    {
+      "color": "0x4582f4"
+    },
+    {
+      "color": "0xd3f5a1"
+    },
+    {
+      "color": "0xa2d425"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+KOPYALADIÐIN VERSÝYON:
+ilk versiyon
+
+
+YENILIKLER:
+-JSON deniyorsun
+-Level dizme iþine baþlýyorsun
+
+
+ÖZELLÝKLER:
+-JSON Data'dan level okuma
+-Toplarý dataya göre dizme
